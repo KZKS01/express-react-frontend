@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The About Page</title>
+</head>
+<body>
+    <h1>About this Webpage</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat aliquid rem voluptatibus explicabo atque repudiandae necessitatibus perspiciatis itaque nihil, assumenda, voluptatum laboriosam asperiores, hic iste aspernatur eveniet iusto mollitia? Excepturi.</p>
+    <% const cats = ['fluffy', 'mr. worms', 'ms kitty'] %>
+    <% cats.forEach(function(c){ %>
+        <p>
+            <%= c %>
+            <!-- <%= prints -->
+        </p>
+    <% }) %>
+    <!-- these js will run on the server side, running on node, each line need a <% %> -->
+</body>
+</html>

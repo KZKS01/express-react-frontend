@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <img src="<%= book.coverImage %>" alt="<%= book.title %>">
+    <h1><%= book.title %></h1>
+    <p>Author: <%= book.author.name %></p>
+    <p>Completed: <%- book.completed ? 'Yes' : 'No' %></p>
+    <form action="/books/<%= book._id %>/ratings" method="POST">
+        <label>
+            Rating (1-5): 
+            <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </label>
+        <label>
+            Comment:
+            <textarea name="content" cols="30" rows="10"></textarea>
+        </label>
+        <input type="submit" value="Add Comment">
+    </form>
+<!-- if there is a rating -->
+    <% if(book.ratings.length) { %>
+        <% let total = 0; %>
+        <ul>
+            <% book.ratings.forEach(r => { %>
+                <% total += parseInt(r.rating) %>
+                <li>
+                    <span>
+                        <%= r.rating %>
+                    </span>
+                    <span>
+                        <!-- these are from ratingSchema -->
+                        <%= r.content %>
+                    </span>
+                    <span>
+                        Added By: <%= r.createdBy.email.split('@')[0] %>
+                    </span>
+                </li>
+            <% }); %>
+        </ul>
+        <p>Average Rating: <%= total / book.ratings.length %></p>
+    <% } else { %>
+        <p>Be the first to rate this book!</p>
+    <% } %>
+
+
+</body>
+</html>

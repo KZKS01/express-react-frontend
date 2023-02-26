@@ -1,0 +1,28 @@
+<nav>
+    <ul>
+        <% if(user) { %>
+            <li>
+                <a href="/logout">Logout</a>
+            </li>
+            <li>
+                <a href="/books">See Book List</a>
+            </li>
+            <li>
+                <a href="/books/new">Add to Book List</a>
+            </li>
+            <li>
+                <a href="/authors">See Authors</a>
+            </li>
+            <li>
+                <a href="/authors/new">Create New Author</a>
+            </li>
+        <% } else { %>
+            <li>
+                <a href="/signup">Sign Up</a>
+            </li>
+            <li>
+                <a href="/login">Login</a>
+            </li>
+        <% } %>
+    </ul>
+</nav>

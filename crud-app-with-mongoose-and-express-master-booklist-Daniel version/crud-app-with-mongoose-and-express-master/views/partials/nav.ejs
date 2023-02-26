@@ -1,0 +1,25 @@
+<nav>
+    <ul>
+        <!-- if logged in  -->
+        <!-- locals.user will work as well -->
+        <% if(user) { %>
+            <li>
+                <a href="/books">See Book List</a>
+            </li>
+            <li>
+                <a href="/books/new">Add to Book List</a>
+            </li>
+            <li>
+                <a href="/logout">Logout</a>
+            </li>
+            <!-- if logged out -->
+        <% } else { %>
+            <li>
+                <a href="/signup">Sign Up</a>
+            </li>
+            <li>
+                <a href="/login">Login</a>
+            </li>
+        <% } %>
+    </ul>
+</nav>

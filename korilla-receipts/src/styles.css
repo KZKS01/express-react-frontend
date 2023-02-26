@@ -1,0 +1,31 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .Receipts {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .Receipt {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid orange;
+    align-items: flex-start;
+    padding: 10px;
+    width: 300px;
+  }
+  
+  .Receipt p {
+    color: purple;
+    padding-top: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  
+  .Receipt hr {
+    width: 100%;
+  }
+  

@@ -1,0 +1,62 @@
+    
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Helvetica;
+    height: 100vh; /*viewport height*/
+    display: grid;  
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 50px 1fr 30px; /*1st row-3rd row*/
+}
+
+nav {
+    display: flex;
+    background-color: #a2cbb6;
+    height: 50px;
+    align-items: center;/*align on the cross axis*/
+    /*justify-content: space-evenly;*/
+}
+
+nav > div {
+    /*immediate decendant selector*/
+    font-size: 20px;
+    margin: 10px; /*seperate each word, added 10px of margin around every div*/
+    color: #f3dba8;
+}
+
+/*pseudo class selector*/
+nav > div:last-child {
+    margin-left: auto;
+}
+
+aside {
+    background-color: #a2b4da;
+  }
+  
+  main {
+    background-color: #f3dba8;
+  }
+  
+  footer {
+    background-color: #a2cbb6;
+  }
+
+  nav, footer {
+    grid-column: span 2; /*1/3;start at grid column 1, spread, then stop grid column 3*/
+  }
+/*
+    css is used to add styles to your web content
+
+    1) What does CSS mean? - Cascading Style Sheets
+    2) Styles are organized using: 
+    a selector > declation block > rules > property:value
+
+    div {
+        color: red; 
+        font-family: Helvetica;
+    }
+
+*/
