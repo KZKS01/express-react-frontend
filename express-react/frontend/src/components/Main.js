@@ -34,7 +34,7 @@ const createPeople = async(person)=>{
     try{
       await fetch( API_URL, {
         method: 'POST',
-        headers: {
+        headers: { //header is an obj that is passed as arg to the fetch fn
           'Content-Type': 'Application/json',
         },
         //When call JSON.stringify(), you are calling the stringify method on the JSON object.
@@ -42,12 +42,16 @@ const createPeople = async(person)=>{
         //because the server can only receive and interpret data in string format.
         body: JSON.stringify(person),
       });
+      //called after the API call is complete
+      //update the list of ppl displayed on the page to include the newly added person
       getPeople();
     } catch(error){
       console.error(error);
     };
   };
-
+//built-in React Hook that run a fn after every render of component
+//1st arg: fn you want to run, 2nd arg: an array of dependencies. 
+//The fn will be re-run if any of the dependencies change
   useEffect(()=>{
     getPeople();
   }, []);

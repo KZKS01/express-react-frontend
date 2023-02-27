@@ -1,8 +1,10 @@
+//typically the entry point of the application; responsible for rendering the root React component and mounting it to the DOM.
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Index(props) {
-  const [person, setPerson] = useState({
+  const [form, setform] = useState({
     name: "",
     image: "",
     title: ""
@@ -12,16 +14,17 @@ function Index(props) {
   // Submit & On Change
   // MERGE
   const handleChange = (event) => {
-    setPerson((prevState) => ({
+    setform((prevState) => ({
       ...prevState,
-      [event.target.name]: event.target.value,
+      //When an evt occurs, the browser creates an evt object that contains information about the event, such as the evt type and the element that triggered it
+      [event.target.name]: event.target.value,//event.target.value is the current value of the input field at the time the onChange event was triggered
     }));
   }
 
   const handleSubmit = (event) => { 
     event.preventDefault();
-    props.createPeople(person);
-    setPerson({
+    props.createPeople(form);
+    setform({
       name: '',
       image: '',
       title: '',
@@ -30,12 +33,13 @@ function Index(props) {
 
 
   const loaded = () => {
-    return props.people.map((person) => (
-      <div key={person._id} className="person">
-        <Link to={`/people/${person._id}`}>
-          <h1>{person.name}</h1>
+    return props.people.map((form) => (
+      <div key={form._id} className="form">
+        <Link to={`/people/${form._id}`}>
+          <h1>{form.name}</h1>
         </Link>
-        <h3>{person.title}</h3>
+        <img src={form.image} alt="img" />
+        <h3>{form.title}</h3>
       </div>
     )
   )};
@@ -45,30 +49,30 @@ function Index(props) {
   };
     
   return (
-    <section className="person-section">
+    <section className="form-section">
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={person.name}
+          value={form.name}
           name="name"
           placeholder="name"
           onChange={handleChange}
         />
         <input
           type="text"
-          value={person.image}
+          value={form.image}
           name="image"
           placeholder="image URL"
           onChange={handleChange}
         />
         <input
           type="text"
-          value={person.title}
+          value={form.title}
           name="title"
           placeholder="title"
           onChange={handleChange}
         />
-        <input type="submit" value="Create Person" />
+        <input type="submit" value="Create form" />
       </form>
       {props.people ? loaded() : loading()}
     </section>
